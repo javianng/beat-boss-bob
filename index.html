@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <title>Beat Boss Bob</title>
+  <meta name="description" content="Bad day at work? Beat Boss Bob. An offline stress-relief game.">
+  <meta name="theme-color" content="#5a3418">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Boss Bob">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <main id="scene">
+      <canvas id="game" aria-label="Game scene. Tap the boss to throw, swipe to fling."></canvas>
+
+      <header id="topbar">
+        <button id="questBtn" class="quest" aria-label="Current quest">
+          <span class="quest-icon"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" fill="none" stroke="#fff" stroke-width="4"/><circle cx="20" cy="20" r="6" fill="none" stroke="#fff" stroke-width="4"/><path d="M20 2v12M20 26v12M2 20h12M26 20h12" stroke="#fff" stroke-width="4"/></svg></span>
+          <span class="quest-text" id="questTitle">Show me the money</span>
+          <span class="quest-sub"><span class="quest-bar"><span id="questFill"></span></span><span id="questProg" class="quest-prog">0 / 500</span></span>
+        </button>
+        <div class="wallet">
+          <span class="cur coin"><i class="coin-ico">$</i><b id="coins">0</b></span>
+          <span class="cur gem"><i class="gem-ico"></i><b id="gems">0</b></span>
+          <button id="settingsBtn" class="round-btn" aria-label="Settings">⚙</button>
+        </div>
+      </header>
+
+      <div id="bossbar">
+        <img id="bossFace" alt="">
+        <div class="bossinfo">
+          <div class="bossname"><span id="bossName">Bob</span> <span class="lv" id="bossLv">Lv 1</span></div>
+          <div class="hp"><span id="hpFill"></span><em id="hpText">60 / 60</em></div>
+          <div class="hp shield" id="shieldWrap" hidden><span id="shieldFill"></span><em>FORCE FIELD</em></div>
+        </div>
+      </div>
+
+      <div id="hud-bottom">
+        <button id="weaponBtn" class="weapon-btn" aria-label="Change weapon"><img id="weaponIco" alt=""><span>Edit</span></button>
+        <div class="hint" id="hint">Tap to throw · Drag the boss to fling him around · Tap <b>!</b> for hazards</div>
+        <button id="rageBtn" class="rage-btn" aria-label="Rage mode"><span class="rage-fill" id="rageFill"></span><span class="rage-label">RAGE</span></button>
+      </div>
+      <div id="toasts"></div>
+      <button id="panelToggle" class="panel-toggle" aria-label="Hide store" aria-expanded="true"><span class="pt-ico">✕</span><span class="pt-label">Hide store</span></button>
+    </main>
+
+    <aside id="panel">
+      <nav id="tabs" role="tablist">
+        <button data-tab="weapons" class="active">Weapons</button>
+        <button data-tab="bosses">Bosses</button>
+        <button data-tab="rooms">Rooms</button>
+        <button data-tab="upgrades">Upgrades</button>
+        <button data-tab="style">Outfits</button>
+        <button data-tab="goals">Goals</button>
+      </nav>
+      <div id="shelf"></div>
+      <div id="content"></div>
+    </aside>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true"><div class="modal-card" id="modalCard"></div></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
